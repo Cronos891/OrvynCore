@@ -1,57 +1,59 @@
 from django.contrib import admin
-from .models import (Tenant, Companies, Countries, Employees, StatesOrProvinces,
-                     Locations, Currencies, HealthInsurances, JobFamilies, JobPositions,
-                     BusinessUnits, CostCenters, InternalOrders, PayGroups, UnionSubgroups,
-                     WorkScheduled)
+from .models import (
+    Tenant, Companies, Countries, Employees, StatesOrProvinces,
+    Locations, Currencies, HealthInsurances, JobFamilies, JobPositions,
+    BusinessUnits, CostCenters, InternalOrders, PayGroups, UnionSubgroups,
+    WorkScheduled
+)
 
 
 @admin.register(JobFamilies)
 class JobFamiliesAdmin(admin.ModelAdmin):
-    list_display = ('job_family_code', 'job_family', 'tenant_id')
-    search_fields = ('job_family_code', 'job_family')
+    list_display = ('job_family_name', 'job_family_group', 'tenant_id')
+    search_fields = ('job_family_name', 'job_family_group')
 
 
 @admin.register(JobPositions)
 class JobPositionsAdmin(admin.ModelAdmin):
-    list_display = ('job_position_code', 'job_position_name', 'job_family', 'tenant_id')
-    list_filter = ('job_family',)
-    search_fields = ('job_position_code', 'job_position_name')
+    list_display = ('job_code', 'job_position_name', 'job_family_name', 'tenant_id')
+    list_filter = ('job_family_name',)
+    search_fields = ('job_code', 'job_position_name')
 
 
 @admin.register(BusinessUnits)
 class BusinessUnitsAdmin(admin.ModelAdmin):
-    list_display = ('business_unit_code', 'business_unit', 'tenant_id')
-    search_fields = ('business_unit_code', 'business_unit')
+    list_display = ('business_unit_id', 'business_unit', 'tenant_id')
+    search_fields = ('business_unit_id', 'business_unit')
 
 
 @admin.register(CostCenters)
 class CostCentersAdmin(admin.ModelAdmin):
-    list_display = ('cost_center_code', 'cost_center', 'tenant_id')
-    search_fields = ('cost_center_code', 'cost_center')
+    list_display = ('cost_center_code', 'cost_center_name', 'tenant_id')
+    search_fields = ('cost_center_code', 'cost_center_name')
 
 
 @admin.register(InternalOrders)
 class InternalOrdersAdmin(admin.ModelAdmin):
-    list_display = ('internal_order_code', 'internal_order', 'tenant_id')
-    search_fields = ('internal_order_code', 'internal_order')
+    list_display = ('internal_order_code', 'internal_order_name', 'tenant_id')
+    search_fields = ('internal_order_code', 'internal_order_name')
 
 
 @admin.register(PayGroups)
 class PayGroupsAdmin(admin.ModelAdmin):
-    list_display = ('pay_group_code', 'pay_group', 'tenant_id')
-    search_fields = ('pay_group_code', 'pay_group')
+    list_display = ('pay_group_code', 'pay_group_name', 'tenant_id')
+    search_fields = ('pay_group_code', 'pay_group_name')
 
 
 @admin.register(UnionSubgroups)
 class UnionSubgroupsAdmin(admin.ModelAdmin):
-    list_display = ('union_subgroup_code', 'union_subgroup', 'tenant_id')
-    search_fields = ('union_subgroup_code', 'union_subgroup')
+    list_display = ('subgroup_code', 'subgroup_name', 'tenant_id')
+    search_fields = ('subgroup_code', 'subgroup_name')
 
 
-@admin.register(WorkScheduled)
+@admin.register(WorkSchedule)
 class WorkScheduledAdmin(admin.ModelAdmin):
-    list_display = ('work_schedule_code', 'work_schedule', 'tenant_id')
-    search_fields = ('work_schedule_code', 'work_schedule')
+    list_display = ('shift_code', 'shift_description', 'tenant_id')
+    search_fields = ('shift_code', 'shift_description')
 
 
 @admin.register(Tenant)
@@ -75,7 +77,7 @@ class CountriesAdmin(admin.ModelAdmin):
 
 @admin.register(Employees)
 class EmployeesAdmin(admin.ModelAdmin):
-    list_display = ('employee_id', 'full_legal_name', 'job_position_name', 'company_code', 'status_of_employee')
+    list_display = ('employee_id', 'full_legal_name', 'company_code', 'status_of_employee')
     list_filter = ('status_of_employee', 'gender', 'company_code')
     search_fields = ('employee_id', 'full_legal_name', 'corporate_email')
     readonly_fields = ('age', 'years_of_service')

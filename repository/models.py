@@ -288,7 +288,7 @@ class InternalOrders(models.Model):
         db_table = 'internal_orders'
 
 
-class WorkScheduled(models.Model):
+class WorkSchedule(models.Model):
     tenant_id = models.ForeignKey(Tenant, on_delete=models.CASCADE)
     shift_code = models.CharField(primary_key=True, max_length=50)
     shift_description = models.CharField(max_length=255, blank=True, null=True)
