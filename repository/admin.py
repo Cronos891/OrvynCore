@@ -50,7 +50,7 @@ class UnionSubgroupsAdmin(admin.ModelAdmin):
     search_fields = ('subgroup_code', 'subgroup_name')
 
 
-@admin.register(WorkSchedule)
+@admin.register(WorkScheduled)
 class WorkScheduledAdmin(admin.ModelAdmin):
     list_display = ('shift_code', 'shift_description', 'tenant_id')
     search_fields = ('shift_code', 'shift_description')
