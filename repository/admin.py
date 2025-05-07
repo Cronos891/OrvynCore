@@ -5,6 +5,55 @@ from .models import (Tenant, Companies, Countries, Employees, StatesOrProvinces,
                      WorkScheduled)
 
 
+@admin.register(JobFamilies)
+class JobFamiliesAdmin(admin.ModelAdmin):
+    list_display = ('job_family_code', 'job_family', 'tenant_id')
+    search_fields = ('job_family_code', 'job_family')
+
+
+@admin.register(JobPositions)
+class JobPositionsAdmin(admin.ModelAdmin):
+    list_display = ('job_position_code', 'job_position_name', 'job_family', 'tenant_id')
+    list_filter = ('job_family',)
+    search_fields = ('job_position_code', 'job_position_name')
+
+
+@admin.register(BusinessUnits)
+class BusinessUnitsAdmin(admin.ModelAdmin):
+    list_display = ('business_unit_code', 'business_unit', 'tenant_id')
+    search_fields = ('business_unit_code', 'business_unit')
+
+
+@admin.register(CostCenters)
+class CostCentersAdmin(admin.ModelAdmin):
+    list_display = ('cost_center_code', 'cost_center', 'tenant_id')
+    search_fields = ('cost_center_code', 'cost_center')
+
+
+@admin.register(InternalOrders)
+class InternalOrdersAdmin(admin.ModelAdmin):
+    list_display = ('internal_order_code', 'internal_order', 'tenant_id')
+    search_fields = ('internal_order_code', 'internal_order')
+
+
+@admin.register(PayGroups)
+class PayGroupsAdmin(admin.ModelAdmin):
+    list_display = ('pay_group_code', 'pay_group', 'tenant_id')
+    search_fields = ('pay_group_code', 'pay_group')
+
+
+@admin.register(UnionSubgroups)
+class UnionSubgroupsAdmin(admin.ModelAdmin):
+    list_display = ('union_subgroup_code', 'union_subgroup', 'tenant_id')
+    search_fields = ('union_subgroup_code', 'union_subgroup')
+
+
+@admin.register(WorkScheduled)
+class WorkScheduledAdmin(admin.ModelAdmin):
+    list_display = ('work_schedule_code', 'work_schedule', 'tenant_id')
+    search_fields = ('work_schedule_code', 'work_schedule')
+
+
 @admin.register(Tenant)
 class TenantAdmin(admin.ModelAdmin):
     list_display = ('tenant_id', 'name', 'created_at', 'updated_at')
